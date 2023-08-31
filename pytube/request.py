@@ -16,6 +16,7 @@ from pytube.helpers import regex_search
 logger = logging.getLogger(__name__)
 
 DEFAULT_RANGE_SIZE = 9 * 1024 * 1024  # 9MB
+DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0", "accept-language": "en-US,en"}
 
 
 def _execute_request(
@@ -25,7 +26,7 @@ def _execute_request(
     data=None,
     timeout=socket._GLOBAL_DEFAULT_TIMEOUT
 ):
-    base_headers = {"User-Agent": "Mozilla/5.0", "accept-language": "en-US,en"}
+    base_headers = {**DEFAULT_HEADERS}
     if headers:
         base_headers.update(headers)
     if data:
